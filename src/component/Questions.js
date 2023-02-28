@@ -6,15 +6,19 @@ export default function Questions(props) {
     a.answer > b.answer ? 1 : b.answer > a.answer ? -1 : 0
   );
   const allanswers = answers.map((item) => {
-    let styles = {
-      backgroundColor: item.isSelected
-        ? isFinished
-          ? item.isCorrect
-            ? "#94D7A2"
-            : "#F8BCBC"
-          : "#D6DBF5"
-        : "white",
-    };
+    let styles = {backgroundColor:""}     
+      if(isFinished){
+          if(item.isSelected){
+            if (item.isCorrect) {
+               styles.backgroundColor = "#94D7A2"
+            } styles.backgroundColor = "#F8BCBC"
+          } else if (item.isCorrect) {
+            styles.backgroundColor = "#94D7A2"
+          } else styles.backgroundColor = "white"
+        }
+        else {
+          item.isSelected ? styles.backgroundColor = "#D6DBF5" : styles.backgroundColor= "white"
+        }
 
     return (
       <span
