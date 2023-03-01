@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Questions(props) {
   const { question, answers, selectAnswer, isFinished } = props;
+
   answers.sort((a, b) =>
     a.answer > b.answer ? 1 : b.answer > a.answer ? -1 : 0
   );
@@ -11,7 +12,7 @@ export default function Questions(props) {
           if(item.isSelected){
             if (item.isCorrect) {
                styles.backgroundColor = "#94D7A2"
-            } styles.backgroundColor = "#F8BCBC"
+            } else styles.backgroundColor = "#F8BCBC"
           } else if (item.isCorrect) {
             styles.backgroundColor = "#94D7A2"
           } else styles.backgroundColor = "white"
@@ -22,6 +23,7 @@ export default function Questions(props) {
 
     return (
       <span
+        key={item.id}
         className="answers"
         dangerouslySetInnerHTML={{ __html: item.answer }}
         style={styles}
